@@ -110,7 +110,7 @@ public class WriteXMLFile {
 		act2.setAttribute("type","work");
 		act2.setAttribute("x",point[0]);
 		act2.setAttribute("y",point[1]);
-		act2.setAttribute("dur","00:10:00");
+		act2.setAttribute("dur","00:15:00");
 		//assumed 10 min of process time
 		plan.appendChild(act2);
 
@@ -150,14 +150,16 @@ public class WriteXMLFile {
 	//background elements
 	//work and live in New Windsor
 	//1327 total
-	//select on avg. 214 people, to match actual census stats
-	for(i = 121; i < 1447; i++) {
+	//select exactly 214 people, to match actual census stats
+	//generate random int between 120 and 1447
+	Set<Integer> group1 = new HashSet<>();
+	while(true) {
 		// person elements
-		if(Math.random()>0.1613) {//=214/1327
-			//System.out.println("dead");
-			continue;
-		}
+		i = (int) (Math.random()*1327+120);
+		if(group1.contains(i)) continue;
 		count++;
+		if (count==214) break;
+		group1.add(i);
 		//System.out.println("alive");
 		Element person = doc.createElement("person");
 
@@ -176,7 +178,7 @@ public class WriteXMLFile {
 		act1.setAttribute("type","home");
 		act1.setAttribute("x",point[0]);
 		act1.setAttribute("y",point[1]);
-		act1.setAttribute("end_time","09:00:00");
+		act1.setAttribute("end_time","08:00:00");
 		plan.appendChild(act1);
 
 		// travel elements
@@ -191,7 +193,7 @@ public class WriteXMLFile {
 		act2.setAttribute("type","work");
 		act2.setAttribute("x",point[2]);
 		act2.setAttribute("y",point[3]);
-		act2.setAttribute("dur","08:00:00");
+		act2.setAttribute("dur","09:00:00");
 		//assumed 8 hour workday
 		plan.appendChild(act2);
 
@@ -210,13 +212,14 @@ public class WriteXMLFile {
 	//people who live elsewhere, work in New Windsor
 	//total of 10428 workers
 	//select 1871 for realism according to census
-	for(i = 1448; i < 11876; i++) {
+	Set<Integer> group2 = new HashSet<>();
+	while(true) {
 		// person elements
-		if(Math.random()>0.1794) {//=1871/10428
-			//System.out.println("dead");
-			continue;
-		}
+		i = (int) (Math.random()*10428+1447);
+		if(group2.contains(i)) continue;
 		count++;
+		if (count==1871) break;
+		group2.add(i);
 		//System.out.println("alive");
 		Element person = doc.createElement("person");
 
@@ -235,7 +238,7 @@ public class WriteXMLFile {
 		act1.setAttribute("type","home");
 		act1.setAttribute("x",point[0]);
 		act1.setAttribute("y",point[1]);
-		act1.setAttribute("end_time","09:00:00");
+		act1.setAttribute("end_time","08:00:00");
 		plan.appendChild(act1);
 
 		// travel elements
@@ -250,7 +253,7 @@ public class WriteXMLFile {
 		act2.setAttribute("type","work");
 		act2.setAttribute("x",point[2]);
 		act2.setAttribute("y",point[3]);
-		act2.setAttribute("dur","08:00:00");
+		act2.setAttribute("dur","09:00:00");
 		//assumed 8 hour workday
 		plan.appendChild(act2);
 
@@ -268,13 +271,14 @@ public class WriteXMLFile {
 	System.out.println(count);
 	//people who live in New Windsor, work elsewhere
 	//select 3843 of 9521 according to census data
-	for(i = 11877; i < 21398; i++) {
+	Set<Integer> group3 = new HashSet<>();
+	while(true) {
 		// person elements
-		if(Math.random()>0.4036) {//=3843/9521
-			//System.out.println("dead");
-			continue;
-		}
+		i = (int) (Math.random()*9521+11877);
+		if(group3.contains(i)) continue;
 		count++;
+		if (count==3843) break;
+		group3.add(i);
 		//System.out.println("alive");
 		Element person = doc.createElement("person");
 
@@ -293,7 +297,7 @@ public class WriteXMLFile {
 		act1.setAttribute("type","home");
 		act1.setAttribute("x",point[0]);
 		act1.setAttribute("y",point[1]);
-		act1.setAttribute("end_time","09:00:00");
+		act1.setAttribute("end_time","08:00:00");
 		plan.appendChild(act1);
 
 		// travel elements
@@ -308,7 +312,7 @@ public class WriteXMLFile {
 		act2.setAttribute("type","work");
 		act2.setAttribute("x",point[2]);
 		act2.setAttribute("y",point[3]);
-		act2.setAttribute("dur","08:00:00");
+		act2.setAttribute("dur","09:00:00");
 		//assumed 8 hour workday
 		plan.appendChild(act2);
 
